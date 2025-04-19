@@ -34,10 +34,9 @@ def save_statistics(result, attempts, game_time):
         with open('statistics.json', 'r') as f:
             stats = json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
-        # Если файла нет или он пустой, создаем новую статистику
         stats = []
     
-    # Добавляем новую запись
+    #новая запись
     stats.append({
         'date': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         'result': 'Победа' if result else 'Поражение',
@@ -45,7 +44,7 @@ def save_statistics(result, attempts, game_time):
         'time_seconds': game_time
     })
     
-    # Сохраняем обновленную статистику
+    # апдейт статистики
     with open('statistics.json', 'w') as f:
         json.dump(stats, f, indent=4)
 
